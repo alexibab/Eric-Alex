@@ -10,60 +10,118 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"> 
     <title id="titApp">Aplicació gestió Sanitària</title>
-
   </head>
-  <body>
-    <div class="container-fluid">
-      <img src="img/1.jpg" class="img-fluid" width="100" alt="">
+  
+  <body style="text-align: center">
+      <main>
+        <div class="container-fluid">
+        <img src="img/1.jpg" class="img-fluid" width="100" alt="">
       <h1>Aplicació gestió Sanitària</h1>
     
       <!-- ==================================================================================== -->  
-      <div class="alert alert-info">BUENAS TARDES</div><br>
+      <div class="alert alert-info">BUENAS TARDES</div><br><br>
      
       
 
       <!-- ------------------------------------------------------------------------------------ -->
       <div class="row">
-
-      
-
-        
-        <div class="row1">
-          <div class="col-md-02">..........</div><br>
-          <div class="col-md-02 col-md-offset-4">..............</div><br>
-        
-        <div id="divPanellGestio">
+        <div class="col">
           
-             
-              <h4 class="text-primary " class="mt-5">Panell de Gestió</h4> <br>
-             
-            <button type="button" id="btnGestHospitals">Hospital</button>
-            <button type="button" id="btnGestPacients">Pacients</button>
-            <button type="button" id="btnGestMalalties">Malalties</button>
-            <button type="button" id="btnGestMetges">Metges</button>
-            <br>
-            <button type="button" id="btnGestAplicacio">Control</button>
-        </div>
+          <h4 id="" class="col; text-primary">Panell de Gestió</h4><br> 
+        
       </div>
-        
-        <div class="col-3">
-          <div class="col-md-10">..........</div><br>
-          <div class="col-md-10 col-md-offset-4">..............</div>
-        <div id="divPanellEscriptori" class="col-md-08"> 
-          <!-- ------------------------------------------------------------------------------------ -->
-          
-          <div  id="divPresentacio">
-              
-              <h4 class="mt-8 mb-8">Benvigut a l'aplicació de gestió Sanitària</h4>
-              <p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p>
+    </div>
+        <div class="row">
+            <div class="col card">
+              <img class="card-img-top" src="img/hospital.jpg" alt="Card image">
+              <div class="card-body text-center">
+                <a href="#" class="btn btn-primary">Hospital</a>
+              </div>
+            </div>
+            <div class="col card">
+              <img class="card-img-top" src="img/doctor.jpg" alt="Card image">
+              <div class="card-body text-center"> 
+                <a href="#" class="btn btn-primary">Pacients</a>
+              </div>
+            </div>
+            <div class="col card">
+              <img class="card-img-top" src="img/virus.jpg" alt="Card image">
+              <div class="card-body text-center">
+                   <a href="#" class="btn btn-primary">Malalties</a>
+              </div>
+            </div>
+            <div class="col card">
+              <img class="card-img-top" src="img/centro.jpg" alt="Card image">
+              <div class="card-body text-center">
+                <a href="#" class="btn btn-primary">Metges</a>
+              </div>
+            </div>
+            <div class="col card">
+                <img class="card-img-top" src="img/control.jpg" alt="Card image">
+                <div class="card-body text-center">
+                     <a href="#" class="btn btn-primary">Control</a>
+                </div>
+              </div>
+      
+      
           </div>
+          <br>
           
+          <div class="row">
           
-        </div>
+            <div class="col"> 
+              <!-- ------------------------------------------------------------------------------------ -->
+              
+              
+                  
+                  <h4 class="mt-8 mb-8">Benvigut a l'aplicació de gestió Sanitària</h4>
+                  <p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p><br>
+              
+              
+              
+            </div>
+            </div>
+          
+        <!-- carrusel -->
         
-        </div>
-        </div>
-
-        </div>
+          <div id="demo" class="carousel slide d-none d-sm-block" data-ride="carousel">
+        
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+              <li data-target="#demo" data-slide-to="3"></li>
+              <li data-target="#demo" data-slide-to="4"></li>
+            </ul>
+            
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+              <div class="carousel-item active text-center">
+                <a href="https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_carousel"></a><img src="img/doctor.jpg" alt="" width="" height="500"></a>
+              </div>
+              <div class="carousel-item text-center">
+                <a href="https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_carousel"><img src="img/virus.jpg" alt="" width="" height="500"></a>
+              </div>
+              <div class="carousel-item text-center">
+                <a href="https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_carousel"><img src="img/hospital.jpg" alt="" width="" height="500"></a>
+              </div>    
+              <div class="carousel-item text-center">
+                <a href="https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_carousel"><img src="img/centro.jpg" alt="" width="" height="500"></a>
+              </div>
+              <div class="carousel-item text-center">
+                <a href="https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_carousel"><img src="img/control.jpg" alt="" width="" height="500"></a>
+              </div>
+            </div>
+            
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </main>
   </body>
 </html>
