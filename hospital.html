@@ -9,12 +9,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/hospital.css">
+
+    <script>
+      $(document).ready(function(){
+        $("#dark").click(function(){
+        $("body").removeClass().addClass("dark");
+      });
+        $("#white").click(function(){
+        $("body").removeClass().addClass("white");
+      
+      });
+        $("#eliminarr").click(function(){
+        $(".carro").hide();
+      });
+    });
+  </script>
+
+
+
     <title id="titApp">Aplicació gestió Sanitària</title>
 
   </head>
   <body>
-    <div class="container-fluid col-sm-4 bg-dark text-white">
-      <img src="1.jpg" class="img-fluid" width="100" alt="">
+    <div class="container-fluid col-sm-4">
+      <img src="img/1.jpg" class="img-fluid" width="100" alt="">
       <h1>Aplicació gestió Sanitària</h1>
     
       <!-- ==================================================================================== -->  
@@ -28,7 +48,7 @@
       
 
         
-        <div class="row1">
+        <div class="carro">
           <div id="demo" class="carousel slide d-none d-sm-block" data-ride="carousel">
 
             <!-- Indicators -->
@@ -44,23 +64,23 @@
             <div class="carousel-inner " >
               <div class="carousel-item active text-center " >
                 <a title="ImgHospital" href="http://www.lostejos.com">
-                <img src="1.png" alt="" width="250" ></a>
+                <img src="img/1.png" alt="" width="250" ></a>
               </div>
               <div class="carousel-item text-center" >
                 <a title="ImgHospital" href="http://www.lostejos.com">
-                <img src="2.png" alt="" width="250"></a>
+                <img src="img/2.png" alt="" width="250"></a>
               </div>
               <div class="carousel-item text-center" >
                 <a title="ImgHospital" href="http://www.lostejos.com">
-                <img src="3.png" alt="" width="250"></a>
+                <img src="img/3.png" alt="" width="250"></a>
               </div>
               <div class="carousel-item text-center" >
                 <a title="ImgHospital" href="http://www.lostejos.com">
-                <img src="4.png" alt="" width="250"></a>
+                <img src="img/4.png" alt="" width="250"></a>
               </div>
               <div class="carousel-item text-center" >
                 <a title="ImgHospital" href="http://www.lostejos.com">
-                <img src="5.png" alt="" width="250"></a>
+                <img src="img/5.png" alt="" width="250"></a>
               </div>
             </div>
           
@@ -80,12 +100,136 @@
              
               <h4 class="text-primary mt-5" >Panell de Gestió</h4> <br>
              
-            <button type="button" id="btnGestHospitals">Hospital</button>
-            <button type="button" id="btnGestPacients">Pacients</button>
-            <button type="button" id="btnGestMalalties">Malalties</button>
-            <button type="button" id="btnGestMetges">Metges</button>
-            <br>
-            <button type="button" id="btnGestAplicacio">Control</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btnGestMalalties">
+                Hospital
+              </button>
+
+
+
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btnGestPacients">
+              Pacients
+            </button>
+            
+            
+            <!-- The Modal -->
+  <div class="modal" id="btnGestPacients">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: black;">Formulario de inscripción</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div style="color: black;">
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form  action="" method="POST">
+            
+            <div class="row" >
+            <b>Nom: </b><input type="text" value="" name="Nom" id="Nom">
+          </div>
+            <div class="row" >
+            <b>Cognom: </b><input type="text" value="" name="Cognom" id="Cognom">
+          </div>
+            <div class="row" >
+            <b>Pes:</b><input type="text" value="" name="Pes" id="Pes">
+          </div>
+            <div class="row" >
+            <b>Data de naixement: </b>
+            <label for="Data"></label>
+          <input type="date" name="data">
+          </div>
+
+          <div class="row">
+            <b>Sexe:</b>
+          </div>
+            <div class="row">
+          <input type="radio"  name="gender" value="Home">
+            <label for="male">Home</label>
+          </div>
+            <div class="row">
+            <input type="radio"  name="gender" value="Dona">
+            <label for="female">Dona</label>
+          </div>
+          
+          <div class="row">
+            <b>Deplegable:</b>
+              <select name="malalties" class="form-select" aria-label="Default select example">
+            <option selected>Malalties:</option>
+            <option value="cardio">-Cardio</option>
+            <option value="trauma">-Trauma</option>
+            <option value="psico">-Psico</option>
+          </select>
+        
+  </div>
+
+
+          </div>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+         
+            <button type="button" class="btn btn-primary" onclick="myFunction()">Enviar</button>
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+            
+
+  <div class="modal" id="btnGestMalalties">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="color: black;">Funcionalitat no implementada</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div style="color: black;">
+        <!-- Modal body -->
+        <div class="modal-body">
+        
+         <p>Funcionalitat no implementada</p>
+
+
+          </div>
+          </form>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+         
+            <button type="button" class="btn btn-primary" onclick="myFunction()">Enviar</button>
+        
+        </div>
+
+      </div>
+    </div>
+  </div>
+            
+
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btnGestMalalties">
+    Malalties
+  </button>
+
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btnGestMalalties">
+    Metges
+  </button>
+  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#btnGestMalalties">
+    Metges
+  </button>
+
+
+            
+            
         </div>
       </div>
         
@@ -100,13 +244,24 @@
               <h4 class="mt-8 mb-8">Benvigut a l'aplicació de gestió Sanitària</h4>
               <p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p>
           </div>
-          
-          
+          <div class="row">
+          <button id="white" class="btn btn-danger mt-3" >
+            White
+          </button>
+          <button id="dark" class="btn btn-danger mt-3" >
+            Dark
+          </button>
+          <button id="eliminarr" class="btn btn-danger mt-3" >
+            Eliminar
+          </button>
+        </div>
         </div>
         
         </div>
         </div>
 
         </div>
+
+       
   </body>
 </html>
