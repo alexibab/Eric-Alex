@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ca" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <title id="titApp">Aplicació gestió Sanitària</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/hospital.css">
+  <script src="./js/classes/Persona.js"></script>
+  <script src="./js/classes/Hospital.js"></script>
+  <script src="./js/classes/Metge.js"></script>
+  <script src="./js/classes/Pacient.js"></script>
+</head>
+<script>
+  $(document).ready(function () {
+    $("#dark").click(function () {
+      $("body").removeClass().addClass("dark");
+    });
+    $("#white").click(function () {
+      $("body").removeClass().addClass("white");
+
+    });
+  });
+</script>
+<style>
+  #divPresentació {
+    color: black;
+  }
+
+  #divHospital {
+    color: black;
+  }
+
+  #divPacient {
+    color: black;
+  }
+
+  #divTractament {
+    color: black;
+  }
+
+  #divControl {
+    color: black;
+  }
+
+  #divCanvisVisuals {
+    color: black;
+  }
+
+  #divPresentacio {
+    color: black;
+  }
+</style>
+
+<body>
+  <div class="text-right whiteblack">
+    <button id="white" class="btn btn-danger mt-3">
+      White
+    </button>
+    <button id="dark" class="btn btn-danger mt-3">
+      Dark
+    </button>
+  </div>
+  <div class="container">
+    <h1 class="text-center mt-3 mb-3">Aplicació gestió Sanitària</h1>
+    <div class="modal fade" id="divEspaiModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="titolModal">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+          <div class="modal-body" id="missatgeModal">
+            Modal body..
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5 alert alert-danger alert-dismissibled d-none" id="divBarraMissatges">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">
+        <h3>&times;</h3>
+      </a>
+      <h3 id="h3BarraMissatges"></h3>
+    </div>
+    <div class="row">
+      <div class="col-md-2" id="divPanellGestio">
+        <h4 class="text-center" id="h4TitolPanell">Panell de Gestió</h4>
+        <button type="button" id="btnGestHospitals" class="btn btn-primary btn-block"
+          onClick="mostraGestioHospital(this)">Hospital</button>
+        <button type="button" id="btnGestPacients" class="btn btn-primary btn-block"
+          onClick="mostraGestioPacients(this)">Pacients</button>
+        <button type="button" id="btnGestMalalties" class="btn btn-primary btn-block"
+          onClick="mostraGestioMalaties(this)">Malalties</button>
+        <button type="button" id="btnGestMetges" class="btn btn-primary btn-block"
+          onClick="mostraGestioMetges()">Metges</button>
+        <br>
+        <button type="button" id="btnGestAplicacio" class="btn btn-primary btn-block"
+          onClick="mostraGestioApp()">Control</button>
+      </div>
+      <div class="col-md-10" id="divPanellEscriptori">
+        <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white" id="divPresentacio">
+          <h4 class="text-center mt-3 mb-3">Benvigut a l'aplicació de gestió Sanitària</h4>
+          <p>Amb els botons del panell lateral, podràs accedir a tots els menus!</p>
+        </div>
+        <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white d-none"
+          id="divHospital">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close" id="tancaDivHospital">
+            <h3>&times;</h3>
+          </a>
+          <h2 class="text-center">Gestió d'hospitals</h2>
+          <hr style="border: 2px solid rgb(2, 6, 255); border-radius: 10px;">
+          <p class="text-center">Introdueix les dades de l'hospital que vols crear:</p>
+          <hr style="border: 1px solid rgb(4, 0, 255); border-radius: 10px;">
+          <div class="form-row" id="formIntroHospital">
+            <div class="col mb-6" id="formIntroHospital_Nom">
+              <label for="nomHospital" class="font-weight-bold"> Nom: </label>
+              <input type="text" id="inputNomHospital" name="Nom" title="Introdueix el nom de l'Hospital."
+                class="form-control" required minlength="1" maxlength="100" onblur="comprovaCampBuit(this)"
+                value="General de Catalunya">
+            </div>
+            <div class="col mb-6" id="formIntroHospital_Llits">
+              <label for="maximPacients" class="font-weight-bold">Màxim de pacients que pot ingressar: </label>
+              <input type="number" id="maximPacientsHospital" name="maxPacHospital"
+                title="Introdueix el nombre màxim de pacients que té l'Hospital." class="form-control" required min="0"
+                max="100" onblur="comprovaCampNumero(this)" value="2" />
+            </div>
+          </div>
+          <div class="text-center" id="botonsIntroHospital">
+            <hr style="border: 1px solid rgb(4, 0, 248); border-radius: 10px;">
+            <button type="button" class="btn btn-primary mt-4" onClick="crearHospital()">Crear</button>
+          </div>
+        </div>
+        <div class="w-100 mx-auto align-items-center border mt-8 mb-8 p-4 rounded shadow bg-white d-none"
+          id="divPacient">
+          <h2 class="text-center">Pacients</h2>
+          <p class="text-center">Introdueix les dades del pacients que vols ingressar:</p>
+          <div id="dadesPacient"></div>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary mt-4" onClick="ingressarPacients()">Ingressar</button>
+          </div>
+        </div>
+        <div class="w-100 mx-auto align-items-center border border-primary p-4 rounded shadow bg-white d-none"
+          id="divTractament">
+          <h2 class="text-center">Pacients en tractament:</h2>
+          <div id="dadesGestio"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/dadesMalalties.js" id="dadesMalaltiesJs"></script>
+  <script src="./js/comprovacions.js" id="comprovacionsJs"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
